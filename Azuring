@@ -1,40 +1,57 @@
-1. Version Control Using Git in Browser 
+1. Version Control Using Git in Browser
+
 Objective: Learn to use GitHub/GitLab/Bitbucket to manage projects. 
+
 Lab Steps: 
 1. Sign Up at GitHub or GitLab. 
+
 2. Create a New Repository:  
 o Click New Repository. 
 o Provide a name and description. 
 o Add a README.md file. 
+
 3. Upload Files Manually:  
 o Click Add File > Upload File. 
 o Select files and commit changes. 
+
 4. Modify Files Online:  
 o Open a file and click Edit. 
 o Make changes and commit. 
+
 5. Check File History:  
 o Open a file and click History. 
+
 Expected Output: 
  A version-controlled project with a history of changes. 
+
 2. Version Control Using Git with Push and Pull Commands 
+
 Objective: Use Git for version control from the terminal. 
+
 Lab Steps: 
+
 a) Install Git (if not installed):  
 b) sudo apt update 
 c) sudo apt install git -y 
+
 d) Configure Git:  
 e) git config --global user.name "Your Name" 
 f) git config --global user.email "you@example.com" 
+
 g) Clone an Existing Repository:  
 h) git clone <repository_url> 
 i) cd <repo_name> 
+
 j) Modify a File & Commit Changes:  
 k) echo "New changes" >> file.txt 
 l) git add . 
+
 m) git commit -m "Updated file" 
+
 n) Push to Remote Repository:  
 o) git push origin main 
 p) Pull Latest Changes:  
 q) git pull origin main 
+
 Expected Output: 
  Changes should be reflected on GitHub/GitLab.

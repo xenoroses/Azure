@@ -1,0 +1,113 @@
+Build and Run a Java Application with Maven. Migrate the same 
+Application to Gradle. Create a Maven Project. Understand the 
+POM file, Dependency Management and Plugins.  
+PART – 1: Build and Run a Java Application with Maven 
+1. Prerequisites required 
+● Java JDK (version 21 preferable) must be installed. 
+● Confirm Java installation by typing the below command in command prompt: 
+java -version 
+Step 1: Download and install Maven from: https://maven.apache.org/download.cgi 
+● Install Binary Zip file only. ->apache-maven-3.9.6-bin.zip 
+❌ Do NOT Download: 
+● src.zip – contains source code (not needed for installation) 
+● .tar.gz – intended for Linux/Unix systems 
+Step 2 : Add Maven to your system path: 
+● MAVEN_HOME ➝ Path to Maven folder 
+● Add MAVEN_HOME/bin to the PATH 
+After Downloading: 
+1. Extract the zip file to a location like: 
+C:\Program Files\Apache\Maven\apache-maven-3.9.6 
+2. Set environment variables using setx (as explained below) 
+3. Open Command Prompt (Run as Administrator) and execute the following :  
+> setx MAVEN_HOME "C:\Program Files\Apache\Maven\apache-maven-3.9.6" /M 
+> setx PATH "%PATH%;C:\Program Files\Apache\Maven\apache-maven-3.9.6\bin" /M 
+4. Restart 
+your 
+Command -> Check whether is Maven is properly installed  
+5. Open Command Prompt and execute the following :  
+>    mvn -v 
+Prompt 
+and 
+check: 
+Step 3: Create a Maven Project -> Type the following in the cmd prompt 
+> mvn archetype:generate -DgroupId=com.example -DartifactId=demo-project 
+DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false 
+OR -> After the Execution the above cmd on the command prompt, the project structure looks like 
+below. 
+Step 4: Add a Dependency -> Step 4 : Go to the demo-project folder and understand the usage of pom.xml file. -> To use a library, add its dependency in the <dependencies> block,  
+Example: Add Gson (for JSON parsing): -> Add the below dependency code section to the pom.xml file. 
+<dependency> 
+<groupId>com.google.code.gson</groupId> 
+<artifactId>gson</artifactId> 
+<version>2.10.1</version> 
+</dependency> 
+-> In the same way you can add any number of dependencies required for your application. 
+Step 5: Building Maven Project -> Change the directory to demo-project : 
+> cd demo-project 
+> mvn compile  
+> mvn test         
+> mvn package        
+Step 6: Run the JAR File -> If you have a main() method in App.java, run the JAR like this: 
+java -cp target/demo-project-1.0-SNAPSHOT.jar com.example.App 
+Note : The above steps is to run a Java Application using Maven. 
+PART 2: Migrate the Same Application to GRADLE 
+Step 1: Delete Maven-Specific Files 
+In the demo-project/ folder: 
+ Delete pom.xml 
+Do NOT delete the src/ folder — we reuse the code. 
+Step 2: Installation of Gradle  
+Download Gradle(version 8.x.x and above) 
+ Go to the official site: https://gradle.org/releases/ 
+ Download the binary-only ZIP (not the complete source code). -> click on Binary - only link , the binary zip file will be downloaded. 
+1. Extract the zip file to C:\Gradle\gradle-8.x.x folder location. (8.x.x - > specify the 
+downloaded version ) 
+2. Set environment variables using setx (as explained below) 
+3. Open Command Prompt (Run as Administrator) and execute the following :  
+> setx GRADLE_HOME "C:\Gradle\gradle-8.x.x" /M 
+[Note: 8.x.x - > specify the downloaded version] 
+> setx PATH "%PATH%;%GRADLE_HOME%\bin" /M 
+4. 
+Restart 
+your 
+Command 
+Prompt 
+and 
+check: -> Check whether is Gradle is properly installed  
+5. 
+Open Command Prompt and execute the following :  
+>    gradle -v 
+Step 3: Create Gradle Files 
+Create two new files in the demo- project folder 
+File 1: build.gradle 
+plugins { 
+id 'java' 
+} 
+group = 'com.example' 
+version = '1.0-SNAPSHOT' 
+repositories { 
+mavenCentral() 
+} 
+dependencies { 
+testImplementation 'junit:junit:4.13.2' 
+} 
+Note : incase of Version discrepancies add the below code to build.grade file 
+java { 
+sourceCompatibility = JavaVersion.VERSION_17 
+targetCompatibility = JavaVersion.VERSION_17 
+} 
+File 2: settings.gradle 
+rootProject.name = 'demo-project 
+The Project Structure looks as below 
+demo-project/ 
+├── build.gradle 
+├── settings.gradle 
+└── src/ 
+├── main/java/com/example/App.java 
+└── test/java/com/example/AppTest.java 
+Step 4: Build with Gradle 
+1. In the demo-project/ folder, run: 
+> gradle build 
+> gradle test  
+2. Run the Gradle  
+> java -cp build/libs/demo-project-1.0-SNAPSHOT.jar com.example.App 
+Note : The above steps is to run a Java Application using Gradle.
